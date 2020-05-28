@@ -9,17 +9,13 @@ LOG='/tmp/ehive.log'
 
 # Prerequisites
 yum install -y graphviz gnuplot cpan | tee -a ${LOG}
+. "${HOME}/.bashrc" | tee -a ${LOG}
 cpan App::cpanminus << EOF
 yes
 local::lib
 yes
 yes
 EOF
-perl -v | tee -a ${LOG}
-mysql -V | tee -a ${LOG}
-dot -V | tee -a ${LOG}
-gnuplot -V | tee -a ${LOG}
-cpanm -V | tee -a ${LOG}
 
 # Slurm Meadow
 cd "${APP_DIR}" && git clone https://github.com/tweep/ensembl-hive-slurm.git | tee -a ${LOG}
@@ -27,3 +23,9 @@ cd "${APP_DIR}" && git clone https://github.com/tweep/ensembl-hive-slurm.git | t
 # Main repository
 cd "${APP_DIR}" && git clone https://github.com/Ensembl/ensembl-hive.git | tee -a ${LOG}
 cd "${APP_DIR}/ensembl-hive" && cpanm --installdeps --with-recommends . | tee -a ${LOG}
+
+perl -v | tee -a ${LOG}
+mysql -V | tee -a ${LOG}
+dot -V | tee -a ${LOG}
+gnuplot -V | tee -a ${LOG}
+cpanm -V | tee -a ${LOG}
