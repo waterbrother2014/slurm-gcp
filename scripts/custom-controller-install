@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+# https://ensembl-hive.readthedocs.io/en/version-2.5/quickstart/install.html#ehive-installation-setup
+# https://ensembl-hive.readthedocs.io/en/version-2.5/contrib/alternative_meadows.html#other-job-schedulers
+# https://github.com/tweep/ensembl-hive-slurm
+
+APP_DIR='/apps'
+
+# Prerequisites
+sudo yum install -y graphviz gnuplot cpan
+sudo cpan App::cpanminus << EOF
+yes
+local::lib
+yes
+yes
+EOF
+perl -v
+mysql -V
+dot -V
+gnuplot -V
+cpanm -V
+
+# Slurm Meadow
+cd "${APP_DIR}" && sudo git clone https://github.com/tweep/ensembl-hive-slurm.git
+
+# Main repository
+cd "${APP_DIR}" && sudo git clone https://github.com/Ensembl/ensembl-hive.git
+cd "${APP_DIR}/ensembl-hive" && cpanm --installdeps --with-recommends .
