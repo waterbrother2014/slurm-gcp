@@ -8,20 +8,20 @@ APP_DIR='/apps'
 LOG='/tmp/ehive.log'
 
 # Prerequisites
-yum install -y graphviz gnuplot cpan | tee -a ${LOG}
-. "${HOME}/.bashrc" | tee -a ${LOG}
-cpan App::cpanminus << EOF
-yes
-local::lib
-yes
-yes
-EOF
+yum install -y cpan graphviz gnuplot | tee -a ${LOG}
 
 # Slurm Meadow
 cd "${APP_DIR}" && git clone https://github.com/tweep/ensembl-hive-slurm.git | tee -a ${LOG}
 
 # Main repository
 cd "${APP_DIR}" && git clone https://github.com/Ensembl/ensembl-hive.git | tee -a ${LOG}
+#. "${HOME}/.bashrc" | tee -a ${LOG}
+cpan App::cpanminus << EOF
+yes
+local::lib
+yes
+yes
+EOF
 cd "${APP_DIR}/ensembl-hive" && cpanm --installdeps --with-recommends . | tee -a ${LOG}
 
 perl -v | tee -a ${LOG}
