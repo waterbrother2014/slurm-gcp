@@ -2,5 +2,6 @@
 
 PROJECT='citc-slurm'
 ZONE='europe-west4-a'
+CLUSTER_NAME='g1'
 
-gcloud compute --project=${PROJECT} ssh --zone=${ZONE} g1-login0
+gcloud compute --project=${PROJECT} ssh --zone=${ZONE} ${CLUSTER_NAME}-login0
