@@ -17,18 +17,18 @@
 
 # [START cluster_yaml]
 imports:
-- path: slurm.jinja
+- path: ../../slurm.jinja
 
 resources:
 - name: slurm-cluster
-  type: slurm.jinja
+  type: ../../slurm.jinja
   properties:
     cluster_name            : g1
 
     zone                    : europe-west4-a
 
     # Optional network configuration fields
-  # READ slurm.jinja.schema for prerequisites
+    # READ slurm.jinja.schema for prerequisites
     # vpc_net                   : default
     # vpc_subnet                : default
     # shared_vpc_host_project   : < my-shared-vpc-project-name >

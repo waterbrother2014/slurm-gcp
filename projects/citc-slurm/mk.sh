@@ -6,7 +6,7 @@
 # https://www.schedmd.com/downloads.php
 
 PROJECT='citc-slurm'
-CONFIG='citc-slurm.yaml'
+CONFIG='slurm-cluster.yaml'
 
 ## DIR where the current script resides
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
