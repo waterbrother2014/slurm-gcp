@@ -12,4 +12,12 @@ CONFIG='slurm-cluster.yaml'
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 CONFIG=${DIR}/${CONFIG}
 
-gcloud deployment-manager deployments --project=${PROJECT} create slurm --config ${CONFIG}
+gcloud deployment-manager deployments --project=${PROJECT} create slurm --config "${CONFIG}"
+
+# Wait for IAP gets configured
+sleep 10
+CLUSTER_NAME='g1'
+ZONE='europe-west4-a'
+
+gcloud compute scp --project=${PROJECT} --zone=${ZONE} "${DIR}/ehive.sh" ${CLUSTER_NAME}-controller:/tmp
+gcloud compute ssh ${CLUSTER_NAME}-controller --project=${PROJECT} --zone=${ZONE} --command="sudo /tmp/ehive.sh &"
