@@ -7,6 +7,9 @@
 APP_DIR='/apps'
 LOG='/tmp/ehive.log'
 
+touch ${LOG}
+chmod a+w ${LOG}
+
 # The following needs Slurm controller properly configured. One sure sign is slurmsync.pid is generated.
 while [ ! -f /tmp/slurmsync.pid ]; do sleep 1; done
 
