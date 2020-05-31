@@ -7,7 +7,7 @@
 
 PROJECT='citc-slurm'
 CLUSTER_NAME='g1'
-ZONE='europe-west4-a'
+ZONE='europe-west2-a'
 
 ## DIR where the current script resides
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
@@ -20,8 +20,8 @@ until [ $status -eq 0 ]; do
   status=$?
   echo "Status: $status"
 done
+
+# Configure controller
 gcloud compute scp --project=${PROJECT} --zone=${ZONE} "${DIR}/ehive.sh" "${DIR}/ehivedepn.sh" ${CLUSTER_NAME}-controller:/tmp
 gcloud compute ssh ${CLUSTER_NAME}-controller --project=${PROJECT} --zone=${ZONE} --command="sudo /tmp/ehive.sh"
-
-# cpanm -V sleeps forever when called in a non-tty session. Run it manually instead.
-#gcloud compute ssh ${CLUSTER_NAME}-controller --project=${PROJECT} --zone=${ZONE} --command="/tmp/ehivedepn.sh"
+gcloud compute ssh ${CLUSTER_NAME}-controller --project=${PROJECT} --zone=${ZONE} --command="/tmp/ehivedepn.sh"

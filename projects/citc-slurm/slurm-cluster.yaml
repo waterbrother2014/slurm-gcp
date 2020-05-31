@@ -25,7 +25,7 @@ resources:
   properties:
     cluster_name            : g1
 
-    zone                    : europe-west4-a
+    zone                    : europe-west2-a
 
     # Optional network configuration fields
     # READ slurm.jinja.schema for prerequisites
@@ -107,7 +107,7 @@ resources:
       - name              : p1-n1-standard-2
         machine_type      : n1-standard-2
         max_node_count    : 10
-        zone              : europe-west4-a
+        zone              : europe-west2-a
 
         # Optional compute configuration fields
 
@@ -134,7 +134,7 @@ resources:
       # - name           : p2-n1-standard-16
         # machine_type   : n1-standard-16
         # max_node_count : 20
-        # zone           : europe-west4-a
+        # zone           : europe-west2-a
 
     # Optional compute configuration fields
 

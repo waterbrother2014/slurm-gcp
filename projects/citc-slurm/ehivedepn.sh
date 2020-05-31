@@ -12,12 +12,16 @@ echo "Starting time: $(date)" >>${LOG} 2>&1
 # Wait for cpanm ready
 status=1
 until [ $status -eq 0 ]; do
-  cpanm -V >>${LOG} 2>&1
+  cpanm -V <<EOF >>${LOG} 2>&1
+'\n'
+EOF
   status=$?
   echo "Status: $status" >>${LOG} 2>&1
   sleep 1s
 done
-cd "${APP_DIR}/ensembl-hive" && cpanm --installdeps --with-recommends . >>${LOG} 2>&1
+cd "${APP_DIR}/ensembl-hive" && cpanm --installdeps --with-recommends . <<EOF >>${LOG} 2>&1
+'\n'
+EOF
 
 # Double-check
 {
@@ -25,5 +29,7 @@ cd "${APP_DIR}/ensembl-hive" && cpanm --installdeps --with-recommends . >>${LOG}
   mysql -V
   dot -V
   gnuplot -V
-  cpanm -V
+  cpanm -V <<EOF
+'\n'
+EOF
 } >>${LOG} 2>&1
