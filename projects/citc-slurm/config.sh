@@ -24,7 +24,7 @@ done
 # Configure controller
 gcloud compute scp --project=${PROJECT} --zone=${ZONE} "${DIR}/ehive.sh" "${DIR}/ehivedepn.sh" "${CLUSTER_NAME}-controller:/tmp"
 gcloud compute ssh "${CLUSTER_NAME}-controller" --project=${PROJECT} --zone=${ZONE} --command="sudo /tmp/ehive.sh"
-gcloud compute ssh "${CLUSTER_NAME}-controller" --project=${PROJECT} --zone=${ZONE} --command="/tmp/ehivedepn.sh"
+gcloud compute ssh "${CLUSTER_NAME}-controller" --project=${PROJECT} --zone=${ZONE} --command="sudo /tmp/ehivedepn.sh"
 
 # Configure login
 gcloud compute scp --project=${PROJECT} --zone=${ZONE} "${DIR}/ehive-slurm.sh" "${CLUSTER_NAME}-login0:/tmp"
