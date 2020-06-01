@@ -19,7 +19,7 @@ EOF
   echo "Status: $status" >>${LOG} 2>&1
   sleep 1s
 done
-cd "${APP_DIR}/ensembl-hive" && sudo cpanm --installdeps --with-recommends . <<EOF >>${LOG} 2>&1
+cd "${APP_DIR}/ensembl-hive" && cpanm --installdeps --with-recommends . <<EOF >>${LOG} 2>&1
 '\n'
 EOF
 
