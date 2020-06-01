@@ -7,4 +7,4 @@
 
 PROJECT='citc-slurm'
 
-gcloud deployment-manager --project=${PROJECT} deployments delete slurm
+gcloud deployment-manager --project=${PROJECT} deployments delete slurm2

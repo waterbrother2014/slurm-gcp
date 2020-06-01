@@ -23,7 +23,7 @@ resources:
 - name: slurm-cluster
   type: ../../slurm.jinja
   properties:
-    cluster_name            : g1
+    cluster_name            : g2
 
     zone                    : europe-west2-a
 
@@ -33,7 +33,7 @@ resources:
     # vpc_subnet                : default
     # shared_vpc_host_project   : < my-shared-vpc-project-name >
 
-    controller_machine_type : n1-standard-2
+    controller_machine_type   : n1-standard-16
     # controller_disk_type      : pd-standard
     # controller_disk_size_gb   : 50
     # controller_labels         :
@@ -49,7 +49,7 @@ resources:
     #   # Optional
     #   db_name: slurm_accounting
 
-    login_machine_type        : n1-standard-2
+    login_machine_type        : n1-standard-1
     # login_disk_type           : pd-standard
     # login_disk_size_gb        : 20
     # login_labels              :
@@ -104,10 +104,18 @@ resources:
     # ompi_version              : v3.1.x
 
     partitions :
-      - name              : p1-n1-standard-2
-        machine_type      : n1-standard-2
-        max_node_count    : 10
+      - name              : p1a-n1-standard-1
+        machine_type      : n1-standard-1
+        max_node_count    : 700
         zone              : europe-west2-a
+      - name              : p1b-n1-standard-1
+        machine_type      : n1-standard-1
+        max_node_count    : 700
+        zone              : europe-west2-b
+      - name              : p1c-n1-standard-1
+        machine_type      : n1-standard-1
+        max_node_count    : 700
+        zone              : europe-west2-c
 
         # Optional compute configuration fields
 
@@ -131,10 +139,18 @@ resources:
 
     # Additional partition
 
-      # - name           : p2-n1-standard-16
-        # machine_type   : n1-standard-16
-        # max_node_count : 20
-        # zone           : europe-west2-a
+      - name           : p2a-n1-standard-2
+        machine_type   : n1-standard-2
+        max_node_count : 700
+        zone           : europe-west2-a
+      - name           : p2b-n1-standard-2
+        machine_type   : n1-standard-2
+        max_node_count : 700
+        zone           : europe-west2-b
+      - name           : p2c-n1-standard-2
+        machine_type   : n1-standard-2
+        max_node_count : 700
+        zone           : europe-west2-c
 
     # Optional compute configuration fields
 
@@ -158,6 +174,82 @@ resources:
         # vpc_subnet                : my-subnet
 
     # Optional GPU configuration fields
+        # gpu_type               : nvidia-tesla-v100
+        # gpu_count              : 8
+
+      - name           : p3a-n1-standard-4
+        machine_type   : n1-standard-4
+        max_node_count : 30
+        zone           : europe-west2-a
+      - name           : p3b-n1-standard-4
+        machine_type   : n1-standard-4
+        max_node_count : 30
+        zone           : europe-west2-b
+      - name           : p3c-n1-standard-4
+        machine_type   : n1-standard-4
+        max_node_count : 30
+        zone           : europe-west2-c
+
+        # Optional compute configuration fields
+
+        # cpu_platform           : Intel Skylake
+        # preemptible_bursting   : False
+        # compute_disk_type      : pd-standard
+        # compute_disk_size_gb   : 20
+        # compute_labels         :
+        #   key1 : value1
+        #   key2 : value2
+        # compute_image_family   : custom-image
+        # network_storage        :
+        #   - server_ip: none
+        #     remote_mount: <gcs bucket name>
+        #     local_mount: /data
+        #     fs_type: gcsfuse
+        #     mount_options: file_mode=664,dir_mode=775,allow_other
+        #
+
+        # Optional network configuration fields
+        # vpc_subnet                : my-subnet
+
+        # Optional GPU configuration fields
+        # gpu_type               : nvidia-tesla-v100
+        # gpu_count              : 8
+
+      - name           : p4a-n1-standard-32
+        machine_type   : n1-standard-32
+        max_node_count : 4
+        zone           : europe-west2-a
+      - name           : p4b-n1-standard-32
+        machine_type   : n1-standard-32
+        max_node_count : 4
+        zone           : europe-west2-b
+      - name           : p4c-n1-standard-32
+        machine_type   : n1-standard-32
+        max_node_count : 4
+        zone           : europe-west2-c
+
+        # Optional compute configuration fields
+
+        # cpu_platform           : Intel Skylake
+        # preemptible_bursting   : False
+        # compute_disk_type      : pd-standard
+        # compute_disk_size_gb   : 20
+        # compute_labels         :
+        #   key1 : value1
+        #   key2 : value2
+        # compute_image_family   : custom-image
+        # network_storage        :
+        #   - server_ip: none
+        #     remote_mount: <gcs bucket name>
+        #     local_mount: /data
+        #     fs_type: gcsfuse
+        #     mount_options: file_mode=664,dir_mode=775,allow_other
+        #
+
+        # Optional network configuration fields
+        # vpc_subnet                : my-subnet
+
+        # Optional GPU configuration fields
         # gpu_type               : nvidia-tesla-v100
         # gpu_count              : 8
 

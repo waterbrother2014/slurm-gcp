@@ -12,6 +12,6 @@ CONFIG='slurm-cluster.yaml'
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 CONFIG=${DIR}/${CONFIG}
 
-gcloud deployment-manager deployments --project=${PROJECT} create slurm --config "${CONFIG}"
+gcloud deployment-manager deployments --project=${PROJECT} create slurm2 --config "${CONFIG}"
 
 "${DIR}/config.sh"
