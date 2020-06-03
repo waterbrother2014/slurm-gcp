@@ -25,7 +25,7 @@ resources:
   properties:
     cluster_name            : g2
 
-    zone                    : europe-west2-a
+    zone                    : europe-west1-d
 
     # Optional network configuration fields
     # READ slurm.jinja.schema for prerequisites
@@ -33,9 +33,9 @@ resources:
     # vpc_subnet                : default
     # shared_vpc_host_project   : < my-shared-vpc-project-name >
 
-    controller_machine_type   : n1-standard-1   #16
-    # controller_disk_type      : pd-standard
-    # controller_disk_size_gb   : 50
+    controller_machine_type   : n1-standard-16
+    controller_disk_type      : pd-standard
+    controller_disk_size_gb   : 2000
     # controller_labels         :
     #   key1 : value1
     #   key2 : value2
@@ -107,34 +107,24 @@ resources:
       - name              : p1a-n1-standard-1
         machine_type      : n1-standard-1
         max_node_count    : 700
-        zone              : europe-west2-a
+        zone              : europe-west1-d
+        preemptible_bursting   : True
+        compute_disk_type      : pd-standard
+        compute_disk_size_gb   : 50
       - name              : p1b-n1-standard-1
         machine_type      : n1-standard-1
         max_node_count    : 700
-        zone              : europe-west2-b
+        zone              : europe-west1-b
+        preemptible_bursting   : True
+        compute_disk_type      : pd-standard
+        compute_disk_size_gb   : 50
       - name              : p1c-n1-standard-1
         machine_type      : n1-standard-1
         max_node_count    : 700
-        zone              : europe-west2-c
-
-        # Optional compute configuration fields
-
-        # cpu_platform           : Intel Skylake
-        # preemptible_bursting   : False
-        # compute_disk_type      : pd-standard
-        # compute_disk_size_gb   : 20
-        # compute_labels         :
-        #   key1 : value1
-        #   key2 : value2
-        # compute_image_family   : custom-image
-
-    # Optional network configuration fields
-        # vpc_subnet                : default
-
-    # Optional GPU configuration fields
-
-        # gpu_type               : nvidia-tesla-v100
-        # gpu_count              : 8
+        zone              : europe-west1-c
+        preemptible_bursting   : True
+        compute_disk_type      : pd-standard
+        compute_disk_size_gb   : 50
 
 
     # Additional partition
@@ -142,91 +132,68 @@ resources:
       - name           : p2a-n1-standard-2
         machine_type   : n1-standard-2
         max_node_count : 700
-        zone           : europe-west2-a
+        zone           : europe-west1-d
+        preemptible_bursting   : True
+        compute_disk_type      : pd-standard
+        compute_disk_size_gb   : 50
       - name           : p2b-n1-standard-2
         machine_type   : n1-standard-2
         max_node_count : 700
-        zone           : europe-west2-b
+        zone           : europe-west1-b
+        preemptible_bursting   : True
+        compute_disk_type      : pd-standard
+        compute_disk_size_gb   : 50
       - name           : p2c-n1-standard-2
         machine_type   : n1-standard-2
         max_node_count : 700
-        zone           : europe-west2-c
-
-    # Optional compute configuration fields
-
-        # cpu_platform           : Intel Skylake
-        # preemptible_bursting   : False
-        # compute_disk_type      : pd-standard
-        # compute_disk_size_gb   : 20
-        # compute_labels         :
-        #   key1 : value1
-        #   key2 : value2
-        # compute_image_family   : custom-image
-        # network_storage        :
-        #   - server_ip: none
-        #     remote_mount: <gcs bucket name>
-        #     local_mount: /data
-        #     fs_type: gcsfuse
-        #     mount_options: file_mode=664,dir_mode=775,allow_other
-        #
-
-    # Optional network configuration fields
-        # vpc_subnet                : my-subnet
-
-    # Optional GPU configuration fields
-        # gpu_type               : nvidia-tesla-v100
-        # gpu_count              : 8
+        zone           : europe-west1-c
+        preemptible_bursting   : True
+        compute_disk_type      : pd-standard
+        compute_disk_size_gb   : 50
 
       - name           : p3a-n1-standard-4
         machine_type   : n1-standard-4
         max_node_count : 30
-        zone           : europe-west2-a
+        zone           : europe-west1-d
+        preemptible_bursting   : True
+        compute_disk_type      : pd-standard
+        compute_disk_size_gb   : 100
       - name           : p3b-n1-standard-4
         machine_type   : n1-standard-4
         max_node_count : 30
-        zone           : europe-west2-b
+        zone           : europe-west1-b
+        preemptible_bursting   : True
+        compute_disk_type      : pd-standard
+        compute_disk_size_gb   : 100
       - name           : p3c-n1-standard-4
         machine_type   : n1-standard-4
         max_node_count : 30
-        zone           : europe-west2-c
-
-        # Optional compute configuration fields
-
-        # cpu_platform           : Intel Skylake
-        # preemptible_bursting   : False
-        # compute_disk_type      : pd-standard
-        # compute_disk_size_gb   : 20
-        # compute_labels         :
-        #   key1 : value1
-        #   key2 : value2
-        # compute_image_family   : custom-image
-        # network_storage        :
-        #   - server_ip: none
-        #     remote_mount: <gcs bucket name>
-        #     local_mount: /data
-        #     fs_type: gcsfuse
-        #     mount_options: file_mode=664,dir_mode=775,allow_other
-        #
-
-        # Optional network configuration fields
-        # vpc_subnet                : my-subnet
-
-        # Optional GPU configuration fields
-        # gpu_type               : nvidia-tesla-v100
-        # gpu_count              : 8
+        zone           : europe-west1-c
+        preemptible_bursting   : True
+        compute_disk_type      : pd-standard
+        compute_disk_size_gb   : 100
 
       - name           : p4a-n1-standard-32
         machine_type   : n1-standard-32
         max_node_count : 4
-        zone           : europe-west2-a
+        zone           : europe-west1-d
+        preemptible_bursting   : True
+        compute_disk_type      : pd-standard
+        compute_disk_size_gb   : 100
       - name           : p4b-n1-standard-32
         machine_type   : n1-standard-32
         max_node_count : 4
-        zone           : europe-west2-b
+        zone           : europe-west1-b
+        preemptible_bursting   : True
+        compute_disk_type      : pd-standard
+        compute_disk_size_gb   : 100
       - name           : p4c-n1-standard-32
         machine_type   : n1-standard-32
         max_node_count : 4
-        zone           : europe-west2-c
+        zone           : europe-west1-c
+        preemptible_bursting   : True
+        compute_disk_type      : pd-standard
+        compute_disk_size_gb   : 100
 
         # Optional compute configuration fields
 

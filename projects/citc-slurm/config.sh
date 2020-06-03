@@ -7,7 +7,7 @@
 
 PROJECT='citc-slurm'
 CLUSTER_NAME='g2'
-ZONE='europe-west2-a'
+ZONE='europe-west1-d'
 
 ## DIR where the current script resides
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
