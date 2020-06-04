@@ -27,3 +27,6 @@ cd "${APP_DIR}" && git clone https://github.com/tweep/ensembl-hive-slurm.git >>$
 
 # Main repository
 cd "${APP_DIR}" && git clone https://github.com/Ensembl/ensembl-hive.git >>${LOG} 2>&1
+
+# create /home/shared
+mkdir -p /home/shared && chmod 777 /home/shared
